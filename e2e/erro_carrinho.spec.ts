@@ -1,14 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { TelaInicialPage } from './pages/tela_inicial_h';
+import { CarrinhoPage } from './pages/carrinho';
 
-test('carrinho sem filmes', async ({ page, request }) => {
-  await page.goto('http://wemovies-qa.s3-website.us-east-2.amazonaws.com');
-  const titulo = page.locator('p', { hasText: 'WeMovies' });
-  await expect(titulo).toHaveText('WeMovies');
-  const carrinho = page.locator('p.sc-fhHczv.EsNGN');
-  await expect(carrinho).toHaveText(/0\s(itens|item)/i);
-   const botaoCarrinho = page.locator('div.sc-hjsuWn.eiILXp');
-  await botaoCarrinho.click();
-  await expect(page).toHaveURL(/\/cart/);
-   const mensagemFalha = page.locator('h3', { hasText: 'Parece que não há nada por aqui :(' });
-  await expect(mensagemFalha).toBeVisible();
+test('Carrinho sem filmes', async ({ page }) => {
+  const telaInicial = new TelaInicialPage(page);
+  const carrinho = new CarrinhoPage(page);
+
+  await telaInicial.abrirPagina();
+  await telaInicial.validarTitulo();
+  await carrinho.irParaCarrinho();
+  await carrinho.validarMensagemFalha();
 });

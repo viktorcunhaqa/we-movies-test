@@ -1,0 +1,1 @@
+export const API_GET_FILMES = 'https://wemovies-seven.vercel.app/api/movies';

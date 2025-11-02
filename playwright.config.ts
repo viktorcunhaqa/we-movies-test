@@ -9,9 +9,9 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-     baseURL: 'http://wemovies-qa.s3-website.us-east-2.amazonaws.com/',
-     trace: 'on-first-retry',
-     screenshot: 'only-on-failure'
+    baseURL: 'http://wemovies-qa.s3-website.us-east-2.amazonaws.com/',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure'
   },
 
   projects: [
@@ -20,24 +20,24 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-   // {
-   //   name: 'firefox',
-    //  use: { ...devices['Desktop Firefox'] },
-   // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-  //  {
-   //   name: 'webkit',
-   //   use: { ...devices['Desktop Safari'] },
-   // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
-    //{
-    //  name: 'Mobile Chrome',
-   //use: { ...devices['Pixel 5'] },
-    //},
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
 
-    //{
-   //name: 'Mobile Safari',
-    //use: { ...devices['iPhone 12'] },
-    //},
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 12'] },
+    },
   ],
 })
